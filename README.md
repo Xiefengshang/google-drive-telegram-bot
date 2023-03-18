@@ -1,6 +1,7 @@
 # Google Drive Uploader Telegram Bot
 **A Telegram bot to upload files from Telegram or Direct links to Google Drive.**
 - Find it on Telegram as [Google Drive Uploader](https://t.me/uploadgdrivebot)
+个人修改：在文件名前添加时间戳(本地下载的时间，仅为了方便，为了识别则获取tg频道文件的时间更合适)
 
 ## Features
 - [X] Telegram files support.
