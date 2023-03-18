@@ -1,5 +1,6 @@
 import os
 from time import sleep
+import time
 from pyrogram import Client, filters
 from bot.helpers.sql_helper import gDriveDB, idsDB
 from bot.helpers.utils import CustomFilters, humanbytes
@@ -8,6 +9,9 @@ from bot.helpers.gdrive_utils import GoogleDrive
 from bot import DOWNLOAD_DIRECTORY, LOGGER
 from bot.config import Messages, BotCommands
 from pyrogram.errors import FloodWait, RPCError
+
+def get_local_time():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 @Client.on_message(filters.private & filters.incoming & filters.text & (filters.command(BotCommands.Download) | filters.regex('^(ht|f)tp*')) & CustomFilters.auth_users)
 def _download(client, message):
@@ -64,6 +68,10 @@ def _telegram_file(client, message):
   LOGGER.info(f'Download:{user_id}: {file.file_id}')
   try:
     file_path = message.download(file_name=DOWNLOAD_DIRECTORY)
+    pos = file_path.find(file.file_name)
+    c = get_local_time() + file_path[pos:]
+    os.rename(os.path.join(file_path[:pos], file.file_name), os.path.join(file_path[:pos], c))
+    file_path = file_path[:pos] + c
     sent_message.edit(Messages.DOWNLOADED_SUCCESSFULLY.format(os.path.basename(file_path), humanbytes(os.path.getsize(file_path))))
     msg = GoogleDrive(user_id).upload_file(file_path, file.mime_type)
     sent_message.edit(msg)
