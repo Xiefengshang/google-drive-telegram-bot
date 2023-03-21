@@ -27,11 +27,11 @@
 ### Installation
 - Install required modules.
 ```sh
-apt install -y git python3 ffmpeg
+apt install -y git python3 ffmpeg libpq-dev
 ```
 - Clone this git repository.
 ```sh 
-git clone https://github.com/viperadnan-git/google-drive-telegram-bot
+git clone https://github.com/Xiefengshang/google-drive-telegram-bot
 ```
 - Change Directory
 ```sh 
