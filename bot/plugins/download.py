@@ -61,16 +61,12 @@ def _telegram_file(client, message):
   	file = message.photo
   	file.mime_type = "images/png"
   	file.file_name = f"IMG-{user_id}-{message.message_id}.png"
-  time_Array = time.localtime(file.date)
-  TrueTime = time.strftime("%Y-%m-%d %H:%M:%S", time_Array)
+  #time_Array = time.localtime(file.date)
+  #TrueTime = time.strftime("%Y-%m-%d %H:%M:%S", time_Array)
   sent_message.edit(Messages.DOWNLOAD_TG_FILE.format(file.file_name, humanbytes(file.file_size), file.mime_type))
   LOGGER.info(f'Download:{user_id}: {file.file_id}')
   try:
-    file_path = message.download(file_name=DOWNLOAD_DIRECTORY)
-    pos = file_path.find(file.file_name)
-    c = TrueTime + file_path[pos:]
-    os.rename(os.path.join(file_path[:pos], file.file_name), os.path.join(file_path[:pos], c))
-    file_path = file_path[:pos] + c
+    file_path = message.download(file_name=DOWNLOAD_DIRECTORY+str(file.date)+file.file_name)
     sent_message.edit(Messages.DOWNLOADED_SUCCESSFULLY.format(os.path.basename(file_path), humanbytes(os.path.getsize(file_path))))
     msg = GoogleDrive(user_id).upload_file(file_path, file.mime_type)
     sent_message.edit(msg)
