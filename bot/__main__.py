@@ -5,7 +5,8 @@ from bot import (
   APP_ID,
   API_HASH,
   BOT_TOKEN,
-  DOWNLOAD_DIRECTORY
+  DOWNLOAD_DIRECTORY,
+  MAX_TASKS
   )
 
 logging.basicConfig(
@@ -29,7 +30,8 @@ if __name__ == "__main__":
         api_hash=API_HASH,
         plugins=plugins,
         #parse_mode="markdown",
-        workdir=DOWNLOAD_DIRECTORY
+        workdir=DOWNLOAD_DIRECTORY,
+        max_concurrent_transmissions=MAX_TASKS
     )
     LOGGER.info('Starting Bot !')
     app.run()
