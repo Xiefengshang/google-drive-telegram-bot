@@ -8,6 +8,8 @@ class config:
     DOWNLOAD_DIRECTORY = "./downloads/"
     G_DRIVE_CLIENT_ID = ""
     G_DRIVE_CLIENT_SECRET = ""
+    MAX_TASKS = 1
+    # the maximum amount of concurrent transmissions, and default number is 1.
 
 
 class BotCommands:
