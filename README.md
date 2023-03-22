@@ -1,7 +1,7 @@
 # Google Drive Uploader Telegram Bot
 **A Telegram bot to upload files from Telegram or Direct links to Google Drive.**
 - Find it on Telegram as [Google Drive Uploader](https://t.me/uploadgdrivebot)  
-个人修改：在文件名前添加时间戳(已修改为文件的时间)以解决相同文件名但不同文件的下载问题；修改为与`Pyrogram`最新版适配的代码，最新版解决了大文件下载不了的问题。
+个人修改：在文件名前添加时间戳(已修改为文件的时间)以解决相同文件名但不同文件的下载问题；修改为与`Pyrogram`最新版适配的代码，最新版解决了大文件下载不了的问题;更新适配了`pyrogram`的多线程下载参数
 
 ## Features
 - [X] Telegram files support.
@@ -15,8 +15,7 @@
 ## My Version
 - [X] Big file support
 - [X] Rename file with timestamp to support some files with same name but different content
-## My ToDo
-- [ ] Download several tasks at the same time
+- [X] Download several tasks at the same time
 ## ToDo 
 - [ ] Handle more exceptions.
 - [ ] LOGGER support.
@@ -24,9 +23,6 @@
 - [ ] Update command.
 
 ## Deploying
-
-### Deploy on [Heroku](https://heroku.com)
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ### Installation
 - Install required modules.
@@ -59,7 +55,7 @@ pip3 install -r requirements.txt
 - `SUPPORT_CHAT_LINK` - Telegram invite link of support chat.
 - `DATABASE_URL` - Postgres database url.
 - `DOWNLOAD_DIRECTORY` - Custom path for downloads. Must end with a forward `/` slash. (Default to `./downloads/`)
-
+- `MAX_TASKS` - The max tasks you want to download from the `telegram`, default number is 1.
 ### Deploy 
 ```sh 
 python3 -m bot
