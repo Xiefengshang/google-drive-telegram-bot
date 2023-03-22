@@ -1,7 +1,7 @@
 # Google Drive Uploader Telegram Bot
 **A Telegram bot to upload files from Telegram or Direct links to Google Drive.**
 - Find it on Telegram as [Google Drive Uploader](https://t.me/uploadgdrivebot)  
-个人修改：在文件名前添加时间戳(已修改为文件的时间)；修改为与`Pyrogram`最新版适配的代码，最新版解决了大文件下载不了的问题。
+个人修改：在文件名前添加时间戳(已修改为文件的时间)以解决相同文件名但不同文件的下载问题；修改为与`Pyrogram`最新版适配的代码，最新版解决了大文件下载不了的问题。
 
 ## Features
 - [X] Telegram files support.
@@ -12,7 +12,11 @@
 - [X] Delete Google Drive Files.
 - [X] Empty Google Drive trash.
 - [X] youtube-dl support.
-
+## My Version
+- [X] Big file support
+- [X] Rename file with timestamp to support some files with same name but different content
+## My ToDo
+- [ ] Download several tasks at the same time
 ## ToDo 
 - [ ] Handle more exceptions.
 - [ ] LOGGER support.
